@@ -5,31 +5,27 @@ import {
   User,
   Menu,
   X,
-  Grid2x2,
-  Heart
+  Heart,
 } from "lucide-react";
-
 import { useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "../products/CartContext";
 import { useWishlist } from "../products/WishlistContext";
+import logo from "../../assets/logo9 (3).png";
 
 const Navbar: React.FC = () => {
-
-  const navigate = useNavigate();
-  const location = useLocation();
-
+  const navigate  = useNavigate();
+  const location  = useLocation();
   const { getTotalItems } = useCart();
-  const { wishlistItems } = useWishlist();
+  const { wishlistItems }  = useWishlist();
 
-  const [mobileMenu, setMobileMenu] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [mobileMenu,  setMobileMenu]  = useState(false);
+  const [showSearch,  setShowSearch]  = useState(false);
+  const [searchTerm,  setSearchTerm]  = useState("");
+  const [logoError,   setLogoError]   = useState(false);
 
   const isActive = (path: string) =>
-    `text-sm font-semibold tracking-wide ${
-      location.pathname === path
-        ? "text-orange-500"
-        : "hover:text-orange-500"
+    `text-sm font-semibold tracking-wide transition-colors duration-150 ${
+      location.pathname === path ? "text-orange-500" : "hover:text-orange-500"
     }`;
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -39,39 +35,32 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const goToCategory = (key: string) => {
+    navigate("/categories", { state: { category: key } });
+    setMobileMenu(false);
+    setMobileCatOpen(false);
+  };
+
   return (
     <nav className="w-full bg-white text-black relative">
-
       <div className="max-w-7xl mx-auto px-6">
-
         <div className="flex items-center justify-between h-16">
 
-          {/* CATEGORIES */}
-          <div className="relative group">
-
-            <div className="flex items-center hover:text-orange-500 gap-3 cursor-pointer">
-              <Grid2x2 className="w-5 h-5" />
-              <span className="text-sm font-semibold tracking-wide">
-                CATEGORIES
-              </span>
-            </div>
-
-            <div className="absolute left-0 top-full w-72 bg-gray-100 text-black shadow-2xl 
-            p-8 space-y-6 opacity-0 invisible 
-            group-hover:opacity-100 group-hover:visible 
-            transition-all duration-300 z-50">
-
-              <button onClick={() => navigate("/tshirts")} className="block font-semibold hover:text-orange-500">T-SHIRTS</button>
-              <button onClick={() => navigate("/sweater")} className="block font-semibold hover:text-orange-500">SWEATER</button>
-              <button onClick={() => navigate("/suit")} className="block font-semibold hover:text-orange-500">SUIT</button>
-              <button onClick={() => navigate("/shirts")} className="block font-semibold hover:text-orange-500">SHIRTS</button>
-              <button onClick={() => navigate("/jeans")} className="block font-semibold hover:text-orange-500">JEANS</button>
-              <button onClick={() => navigate("/jackets")} className="block font-semibold hover:text-orange-500">JACKETS</button>
-
-            </div>
+          {/* LOGO */}
+          <div className="flex items-center cursor-pointer" onClick={() => navigate("/")}>
+            {!logoError ? (
+              <img
+                src={logo}
+                alt="logo"
+                className="h-15 object-contain"
+                onError={() => setLogoError(true)}
+              />
+            ) : (
+              <span className="text-xl font-bold text-orange-500">SHOP</span>
+            )}
           </div>
 
-          {/* CENTER MENU */}
+          {/* ── DESKTOP MENU ── */}
           <div className="hidden md:flex items-center gap-10">
 
             <button onClick={() => navigate("/")} className={isActive("/")}>
@@ -86,18 +75,20 @@ const Navbar: React.FC = () => {
               SHOP
             </button>
 
+            <button onClick={() => navigate("/categories")} className={isActive("/categories")}>
+              CATEGORIES
+            </button>
+
             <button onClick={() => navigate("/contact")} className={isActive("/contact")}>
               CONTACT
             </button>
-
           </div>
 
-          {/* RIGHT ICONS */}
+          {/* ── RIGHT ICONS ── */}
           <div className="flex items-center gap-6">
 
-            {/* SEARCH */}
+            {/* Search */}
             <div className="flex items-center relative">
-
               {showSearch && (
                 <input
                   type="text"
@@ -105,67 +96,77 @@ const Navbar: React.FC = () => {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onKeyDown={handleSearch}
-                  className="border rounded-lg px-3 py-1 text-sm focus:outline-none focus:border-orange-500 mr-2"
+                  className="border border-gray-200 rounded-xl px-3 py-1.5 text-sm focus:outline-none focus:border-orange-500 mr-2 w-44 transition-all duration-200"
                 />
               )}
-
               <button onClick={() => setShowSearch(!showSearch)}>
                 <Search className="w-5 h-5" />
               </button>
-
             </div>
 
-            {/* WISHLIST */}
+            {/* Wishlist */}
             <button onClick={() => navigate("/wishlist")} className="relative">
               <Heart className="w-5 h-5" />
-
               {wishlistItems.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-orange-500 text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
                   {wishlistItems.length}
                 </span>
               )}
             </button>
 
-            {/* PROFILE */}
+            {/* Profile */}
             <button onClick={() => navigate("/profile")}>
               <User className="w-5 h-5" />
             </button>
 
-            {/* CART */}
+            {/* Cart */}
             <button onClick={() => navigate("/cart")} className="relative">
               <ShoppingCart className="w-5 h-5" />
-
               {getTotalItems() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-orange-500 text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
                   {getTotalItems()}
                 </span>
               )}
             </button>
 
-            {/* MOBILE MENU */}
-            <button
-              className="md:hidden"
-              onClick={() => setMobileMenu(!mobileMenu)}
-            >
+            {/* Mobile hamburger */}
+            <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
               {mobileMenu ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+
+        {/* ── MOBILE MENU ── */}
+        {mobileMenu && (
+          <div className="md:hidden pb-4 flex flex-col gap-1 text-sm font-semibold border-t border-gray-100 pt-3">
+
+            <button onClick={() => { navigate("/"); setMobileMenu(false); }}
+              className="text-left px-2 py-2.5 hover:text-orange-500 transition-colors">
+              HOME
+            </button>
+
+            <button onClick={() => { navigate("/about"); setMobileMenu(false); }}
+              className="text-left px-2 py-2.5 hover:text-orange-500 transition-colors">
+              ABOUT US
+            </button>
+
+            <button onClick={() => { navigate("/shop"); setMobileMenu(false); }}
+              className="text-left px-2 py-2.5 hover:text-orange-500 transition-colors">
+              SHOP
+            </button>
+
+            <button onClick={() => { navigate("/categories"); setMobileMenu(false); }}
+              className="text-left px-2 py-2.5 hover:text-orange-500 transition-colors">
+              CATEGORIES
+            </button>
+
+            <button onClick={() => { navigate("/contact"); setMobileMenu(false); }}
+              className="text-left px-2 py-2.5 hover:text-orange-500 transition-colors">
+              CONTACT
             </button>
 
           </div>
-
-        </div>
-
-        {/* MOBILE MENU */}
-        {mobileMenu && (
-          <div className="md:hidden pb-4 flex flex-col gap-4 text-sm font-semibold">
-
-            <button onClick={() => navigate("/")}>HOME</button>
-            <button onClick={() => navigate("/about")}>ABOUT US</button>
-            <button onClick={() => navigate("/shop")}>SHOP</button>
-            <button onClick={() => navigate("/contact")}>CONTACT</button>
-
-          </div>
         )}
-
       </div>
     </nav>
   );

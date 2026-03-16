@@ -14,7 +14,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/CheckOut";
 import PaymentPage from "./pages/paymentpage";
 import UserProfile from "./pages/Profile";
-
+import CategoriesPage from "./pages/categories";
 import About from "./pages/aboutpage";
 import Shop from "./pages/Shop";
 import Contact from "./pages/contact";
@@ -25,6 +25,7 @@ import Layout from "./components/common/Layout";
 /* ── Contexts ── */
 import { WishlistProvider } from "./components/products/WishlistContext";
 import { CartProvider } from "./components/products/CartContext";
+
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/Categories" element={<CategoriesPage />} />
                 <Route path="/contact" element={<Contact />} />
 
                 {/* ── Auth Pages ── */}
@@ -57,9 +59,9 @@ function App() {
                 <Route
                   path="/product/:id"
                   element={
-                    <ProtectedRoute>
+                    // <ProtectedRoute>
                       <ProductDetail />
-                    </ProtectedRoute>
+                    // </ProtectedRoute>
                   }
                 />
 

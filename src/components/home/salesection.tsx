@@ -212,9 +212,9 @@ export default function FeaturedCategories() {
                 className="font-black text-[#111] leading-none tracking-tight"
                 style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)" }}
               >
-                On Sale{" "}
+                Big Saving {" "}
                 <em className="text-orange-500" style={{ fontStyle: "italic" }}>
-                  Product
+                All Products
                 </em>
               </h2>
               <p className="text-xs text-gray-400 tracking-wide mt-1.5">

@@ -1,31 +1,39 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Send } from 'lucide-react';
-
+import logo from "../../assets/logo99.png";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-black text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-          
+
           {/* Exclusive Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">Exclusive</h3>
+
+            <img
+              src={logo}
+              alt="logo"
+              className="h-15 object-contain"
+            />
+            
             <div className="space-y-3">
               <p className="text-lg">Subscribe</p>
               <p className="text-sm text-gray-300">Get 10% off your first order</p>
+
               <div className="flex">
                 <input
                   type="email"
                   placeholder="Enter your email"
                   className="bg-transparent border border-gray-600 px-3 py-2 flex-1 text-sm placeholder-gray-400 rounded-l focus:outline-none focus:border-gray-400"
                 />
+
                 <button className="bg-transparent border border-gray-600 border-l-0 px-3 py-2 rounded-r hover:bg-gray-800 transition-colors">
                   <Send className="w-4 h-4" />
                 </button>
               </div>
+
             </div>
           </div>
-
           {/* Support Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Support</h3>
@@ -64,7 +72,7 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold">Download App</h3>
             <div className="space-y-3">
               <p className="text-xs text-gray-400">Save $3 with App New User Only</p>
-              
+
               {/* QR Code and App Store buttons */}
               <div className="flex gap-3">
                 {/* QR Code placeholder */}
@@ -73,7 +81,7 @@ const Footer: React.FC = () => {
                     <div className="text-white text-xs font-mono">QR</div>
                   </div>
                 </div>
-                
+
                 {/* App Store buttons */}
                 <div className="space-y-2">
                   <div className="bg-gray-800 border border-gray-600 rounded px-3 py-1 flex items-center gap-2 hover:bg-gray-700 transition-colors cursor-pointer">
@@ -85,7 +93,7 @@ const Footer: React.FC = () => {
                       <p className="font-semibold">Google Play</p>
                     </div>
                   </div>
-                  
+
                   <div className="bg-gray-800 border border-gray-600 rounded px-3 py-1 flex items-center gap-2 hover:bg-gray-700 transition-colors cursor-pointer">
                     <div className="w-5 h-5 bg-white rounded-sm flex items-center justify-center">
                       <span className="text-black text-xs font-bold">🍎</span>
