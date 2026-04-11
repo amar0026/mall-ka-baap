@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 // ── Replace this import with your actual asset path ──
 // import suitImg from "../../assets/mensuit.png";
-const suitImg = "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=400&q=80";
+const suitImg = "https://res.cloudinary.com/dquki4xol/image/upload/v1775912499/mall-ka-baap-deshbandhunagar-kolkata-shopping-mall-display-system-dealers-71yxyjc8fl-250_rv9gi5.avif";
 
 /* ─────────────────────────────────────────────
    Main component
