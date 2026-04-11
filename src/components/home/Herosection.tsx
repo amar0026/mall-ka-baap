@@ -42,18 +42,18 @@ const slides: Slide[] = [
     heading: ["Elegance", "Redefined", "For Every", "Woman"],
     accentIdx: 1,
     body: "From ethnic elegance to western chic — discover our women's collection.",
-    img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=80",
+    img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775906061/elegant-woman-in-orange-traditional-dress-at-palace-photo_fxvbet.jpg",
     accent: "#ea1e6a",
   },
 ];
 
 const categories: Category[] = [
-  { label: "Men's Wear",         img: "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80", items: ["Shirts", "Trousers", "Suits", "Jackets"] },
-  { label: "Women's Collection", img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80", items: ["Dresses", "Sarees", "Kurtas", "Tops"] },
+  { label: "Men's Wear",         img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775907723/71ETqr_bAVL._AC_UY350__e4quat.jpg", items: ["Shirts", "Trousers", "Suits", "Jackets"] },
+  { label: "Women's Collection", img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775907429/e9c77f23-bfc0-4af2-bab8-38bff47ff182_uxy0w9.jpg", items: ["Dresses", "Sarees", "Kurtas", "Tops"] },
   { label: "Boys Fashion",       img: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=600&q=80", items: ["T-Shirts", "Jeans", "Shorts"] },
-  { label: "Girls Fashion",      img: "https://images.unsplash.com/photo-1476234251651-f353703a034d?w=600&q=80", items: ["Frocks", "Lehengas", "Skirts"] },
-  { label: "Ethnic Wear",        img: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=80", items: ["Kurtas", "Sherwanis", "Sarees"] },
-  { label: "Western Styles",     img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80", items: ["Jeans", "Blazers", "Denim"] },
+  { label: "Girls Fashion",      img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775907906/rn-image_picker_lib_temp_ffe2ca8c-8016-4a31-8f42-4c9999699b9c_j3r2gg.webp", items: ["Frocks", "Lehengas", "Skirts"] },
+  { label: "Ethnic Wear",        img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775907066/24AUD10663-E607484_tvplld.webp", items: ["Kurtas", "Sherwanis", "Sarees"] },
+  { label: "Western Styles",     img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775906958/approval_06_09_2024O1CN01zcnDuS26pEdhlNmrX__21_212823427710-0-cib_aa2c2d5f-20c3-4cc9-b48e-ff5ec3f7358f_km3tuv.jpg", items: ["Jeans", "Blazers", "Denim"] },
 ];
 
 export default function HeroSection() {
