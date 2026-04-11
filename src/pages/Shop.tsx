@@ -155,10 +155,6 @@ export default function ShopPage({ onCartOpen }: ShopPageProps) {
         <div className="fixed inset-0 pointer-events-none z-0"
           style={{ backgroundImage:"radial-gradient(circle, rgba(249,115,22,.06) 1px, transparent 1px)", backgroundSize:"28px 28px", animation:"dotDrift 20s linear infinite" }}/>
 
-        {/* orange top stripe */}
-        <div className="fixed top-0 left-0 right-0 h-[3px] z-50"
-          style={{ background:"linear-gradient(90deg,#f97316,#ea580c,#f97316,#ea580c)", backgroundSize:"300% 100%", animation:"shimmerBar 3s linear infinite" }}/>
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pt-8 pb-16">
 
           {/* ── HEADER ── */}
