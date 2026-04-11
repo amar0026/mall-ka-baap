@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Award, Heart, ShieldCheck, Truck, Users, Star, MapPin, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Award, Heart, ShieldCheck, Truck, Users, Star, MapPin, Mail, Phone, ShoppingBag, RotateCcw, Zap } from "lucide-react";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -30,18 +30,25 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 export default function AboutPage() {
-  const hero    = useInView(0.1);
+  const welcome = useInView(0.1);
+  const story   = useInView(0.1);
   const values  = useInView(0.1);
   const stats   = useInView(0.2);
   const contact = useInView(0.15);
 
   const coreValues = [
-    { icon: <Heart className="w-6 h-6" />,       title: "Customer First",   desc: "Every decision starts and ends with what's best for our customers." },
-    { icon: <ShieldCheck className="w-6 h-6" />,  title: "Quality Assured",  desc: "Every garment passes our 12-point quality check before it reaches you." },
-    { icon: <Truck className="w-6 h-6" />,        title: "Fast & Reliable",  desc: "Same-day dispatch with real-time tracking on every order." },
-    { icon: <Award className="w-6 h-6" />,        title: "Best Value",       desc: "Premium fashion at prices that respect your budget — always." },
+    { icon: <Heart className="w-6 h-6" />,       title: "Customer First",    desc: "Every decision starts and ends with what's best for our customers." },
+    { icon: <ShieldCheck className="w-6 h-6" />,  title: "Quality Assured",   desc: "Every garment passes our 12-point quality check before it reaches you." },
+    { icon: <Truck className="w-6 h-6" />,        title: "Fast & Reliable",   desc: "Same-day dispatch with real-time tracking on every order." },
+    { icon: <Award className="w-6 h-6" />,        title: "Best Value",        desc: "Premium fashion at prices that respect your budget — always." },
     { icon: <Users className="w-6 h-6" />,        title: "Inclusive Fashion", desc: "Styles for men, women, boys and girls across every age group." },
-    { icon: <Star className="w-6 h-6" />,         title: "Community Driven", desc: "Built on 12,000+ happy customers and counting." },
+    { icon: <Star className="w-6 h-6" />,         title: "Community Driven",  desc: "Built on 12,000+ happy customers and counting." },
+  ];
+
+  const missionPoints = [
+    { icon: <ShoppingBag className="w-5 h-5" />, title: "Diverse Selection",    desc: "High-quality products across every category, curated for every family." },
+    { icon: <Zap className="w-5 h-5" />,         title: "Fast Shipping",        desc: "Same-day dispatch with real-time tracking on every single order." },
+    { icon: <RotateCcw className="w-5 h-5" />,   title: "Hassle-Free Returns",  desc: "Easy, no-questions-asked returns because your satisfaction comes first." },
   ];
 
   return (
@@ -79,84 +86,151 @@ export default function AboutPage() {
           background-image: radial-gradient(circle, rgba(234,100,30,0.07) 1px, transparent 1px);
           background-size: 26px 26px;
         }
+
+        .story-img-stack { position: relative; }
+        .story-img-stack .img-back {
+          position: absolute; top: 0; right: 0;
+          width: 55%; height: 100%;
+          border-radius: 20px; overflow: hidden;
+          background: linear-gradient(135deg, #fde68a, #fed7aa);
+        }
+        .story-img-stack .img-front {
+          position: relative; z-index: 2;
+          width: 60%; border-radius: 20px; overflow: hidden;
+          box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+          margin-top: 40px;
+        }
       `}</style>
 
       <div className="about-page">
 
-        {/* ══ HERO ══ */}
-        <section className="relative min-h-[92svh] flex items-center overflow-hidden bg-[#fff7f3]">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-orange-100 opacity-60 blur-3xl -translate-y-1/4 translate-x-1/4 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-orange-50 opacity-80 blur-3xl translate-y-1/4 -translate-x-1/4 pointer-events-none" />
-          <div className="dot-bg absolute inset-0 pointer-events-none" />
 
-          <div ref={hero.ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+        {/* ══ WELCOME / MISSION ══ */}
+        <section ref={welcome.ref} className="py-20 px-4 sm:px-8 bg-white">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left: image placeholder */}
+            <div className={`fade-right d1 ${welcome.inView ? "in" : ""} relative`}>
+              <div className="absolute -top-4 -left-4 w-24 h-24 rounded-2xl bg-orange-100 opacity-60 z-0" />
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-orange-100 border border-orange-50 aspect-[4/3]">
+                <img src="https://res.cloudinary.com/dquki4xol/image/upload/v1775912499/mall-ka-baap-deshbandhunagar-kolkata-shopping-mall-display-system-dealers-71yxyjc8fl-250_rv9gi5.avif" alt="Fashion store" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-2xl bg-orange-50 opacity-80 z-0" />
+            </div>
+
+            {/* Right: text */}
             <div className="space-y-8">
-              <div className={`fade-up d1 ${hero.inView ? "in" : ""}`}>
+              <div className={`fade-up d1 ${welcome.inView ? "in" : ""}`}>
+                <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-500 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full">
+                  Welcome
+                </span>
+              </div>
+
+              <div className={`fade-up d2 ${welcome.inView ? "in" : ""}`}>
+                <h2 className="font-display font-extrabold text-[#111] leading-tight" style={{ fontSize: "clamp(1.9rem,4vw,3rem)" }}>
+                  Welcome to<br /><span className="shimmer-text">Mall Ka Baap</span>
+                </h2>
+              </div>
+
+              <div className={`fade-up d3 ${welcome.inView ? "in" : ""}`}>
+                <p className="text-gray-500 leading-relaxed" style={{ fontSize: "clamp(14px,1.4vw,16px)" }}>
+                  We're passionate about providing you with a seamless online shopping experience.
+                  From our story to our mission and our unwavering commitment to customer satisfaction —
+                  everything we do is built around <em>you</em>.
+                </p>
+              </div>
+
+              <div className={`fade-up d3 ${welcome.inView ? "in" : ""}`}>
+                <h3 className="font-display font-bold text-[#111] text-xl mb-4">Our Mission</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                  Our mission is to offer a diverse selection of high-quality products at competitive prices.
+                  We strive to exceed customer expectations by delivering an outstanding shopping experience every time.
+                </p>
+              </div>
+
+              <div className={`fade-up d4 ${welcome.inView ? "in" : ""} space-y-4`}>
+                {missionPoints.map((mp, i) => (
+                  <div key={mp.title} className="flex items-start gap-4" style={{ transitionDelay: `${i * 0.1}s` }}>
+                    <div className="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center text-white flex-shrink-0 shadow-md shadow-orange-200">
+                      {mp.icon}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-[#111] text-sm mb-0.5">{mp.title}</p>
+                      <p className="text-gray-400 text-sm leading-relaxed">{mp.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══ OUR STORY ══ */}
+        <section ref={story.ref} className="py-20 px-4 sm:px-8 bg-[#fff7f3]">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left: text */}
+            <div className="space-y-8 order-2 lg:order-1">
+              <div className={`fade-right d1 ${story.inView ? "in" : ""}`}>
                 <span className="inline-flex items-center gap-2 bg-white border border-orange-200 text-orange-500 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
                   Our Story
                 </span>
               </div>
 
-              <div className={`fade-up d2 ${hero.inView ? "in" : ""}`}>
-                <h1 className="font-display font-extrabold leading-[1.04] tracking-tight text-[#111]" style={{ fontSize: "clamp(2.6rem,6vw,5rem)" }}>
-                  Fashion for<br />
-                  <span className="shimmer-text">Every Family.</span><br />
-                  Every Budget.
-                </h1>
+              <div className={`fade-right d2 ${story.inView ? "in" : ""}`}>
+                <h2 className="font-display font-extrabold text-[#111] leading-tight" style={{ fontSize: "clamp(1.9rem,4vw,3rem)" }}>
+                  How It All<br /><span className="shimmer-text">Began</span>
+                </h2>
               </div>
 
-              <div className={`fade-up d3 ${hero.inView ? "in" : ""}`}>
-                <p className="text-gray-500 leading-relaxed max-w-md" style={{ fontSize: "clamp(14px,1.5vw,16px)" }}>
-                  Mall Ka Baap was born from a simple belief — that stylish, high-quality clothing
-                  shouldn't be a luxury. We bring India's families the best fashion at prices that make sense.
+              <div className={`fade-right d3 ${story.inView ? "in" : ""}`}>
+                <p className="text-gray-500 leading-relaxed" style={{ fontSize: "clamp(14px,1.4vw,16px)" }}>
+                  Mall Ka Baap started with a simple vision: to make shopping convenient, enjoyable,
+                  and accessible to everyone. What began as a small venture has now grown into a thriving
+                  online marketplace, serving customers across 18+ states in India.
                 </p>
               </div>
 
-              <div className={`fade-up d4 ${hero.inView ? "in" : ""} flex items-center gap-4 flex-wrap`}>
+              <div className={`fade-right d4 ${story.inView ? "in" : ""} bg-white rounded-2xl p-6 border border-orange-100 shadow-sm`}>
+                <p className="text-gray-500 text-sm leading-relaxed italic">
+                  "We started small, with a big dream. Today, every package we ship carries that same
+                  original promise — fashion that's for everyone, not just a few."
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-md shadow-orange-200">
+                    <span className="text-white font-bold text-sm">AA</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[#111] text-sm">Ankit Agarwal</p>
+                    <p className="text-orange-400 text-xs">Founder & CEO</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className={`fade-right d5 ${story.inView ? "in" : ""}`}>
                 <button className="group relative overflow-hidden bg-[#111] text-white font-medium tracking-wide text-sm px-8 py-4 rounded-full flex items-center gap-2 transition-transform hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-200">
                   <span className="relative z-10">Shop Now</span>
                   <ArrowUpRight size={15} className="relative z-10 group-hover:rotate-45 transition-transform" />
                   <span className="absolute inset-0 bg-orange-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-full" />
                 </button>
-                <a href="#contact" className="text-sm font-medium text-gray-500 hover:text-orange-500 transition-colors flex items-center gap-1">
-                  Get in touch <ArrowUpRight size={14} />
-                </a>
               </div>
             </div>
 
-            {/* Founder card */}
-            <div className={`fade-left d3 ${hero.inView ? "in" : ""} flex justify-center lg:justify-end`}>
-              <div className="relative">
-                <div className="absolute inset-0 rounded-3xl border-2 border-dashed border-orange-200 scale-105 rotate-2" />
-                <div className="relative bg-white rounded-3xl p-8 shadow-2xl shadow-orange-100 border border-orange-50 max-w-sm w-full">
-                  <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center mb-6 shadow-lg shadow-orange-200">
-                    <span className="font-display font-bold text-white text-3xl">AA</span>
+            {/* Right: image collage */}
+            <div className={`fade-left d2 ${story.inView ? "in" : ""} order-1 lg:order-2`}>
+              <div className="relative h-[420px]">
+                <div className="absolute top-0 right-0 w-[55%] h-[85%] rounded-3xl overflow-hidden border border-orange-100 shadow-xl">
+                  <img src="https://res.cloudinary.com/dquki4xol/image/upload/v1775912499/mall-ka-baap-deshbandhunagar-kolkata-shopping-mall-display-system-dealers-71yxyjc8fl-250_rv9gi5.avif" alt="Fashion store" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute bottom-0 left-0 w-[60%] h-[80%] rounded-3xl overflow-hidden border border-orange-50 shadow-2xl shadow-orange-100 z-10">
+                  <img src="https://res.cloudinary.com/dquki4xol/image/upload/v1775910600/girl-friends-shopping-clothes-store-picture-143749390_cyu9tc.webp" alt="Happy customers" className="w-full h-full object-cover" />
+                </div>
+                {/* Floating stat badge */}
+                <div className="absolute bottom-8 right-4 z-20 bg-white rounded-2xl px-5 py-3 shadow-xl shadow-orange-100 border border-orange-50">
+                  <div className="font-display font-extrabold text-[#111] text-2xl leading-none">
+                    <Counter to={12000} suffix="+" />
                   </div>
-                  <div className="mb-1">
-                    <span className="text-xs font-semibold tracking-widest text-orange-400 uppercase">Founder & CEO</span>
-                  </div>
-                  <h2 className="font-display font-extrabold text-[#111] text-2xl mb-3 leading-tight">Ankit Agarwal</h2>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                    Entrepreneur, fashion enthusiast and the driving force behind Mall Ka Baap's mission to democratize style across India.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 pt-5 border-t border-gray-100">
-                    {[
-                      { label: "Years in Business", value: "5+" },
-                      { label: "Cities Served",     value: "18+" },
-                    ].map(s => (
-                      <div key={s.label}>
-                        <div className="font-display font-bold text-[#111] text-xl">{s.value}</div>
-                        <div className="text-gray-400 text-xs mt-0.5">{s.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-5 bg-orange-50 rounded-xl px-4 py-3 border-l-2 border-orange-400">
-                    <p className="text-xs text-gray-500 italic leading-relaxed">
-                      "Style is not a privilege. It's a right for every Indian family."
-                    </p>
-                    <p className="text-xs font-semibold text-orange-500 mt-1">— Ankit Agarwal</p>
-                  </div>
+                  <div className="text-gray-400 text-xs mt-1 tracking-wide">Happy Customers</div>
                 </div>
               </div>
             </div>
@@ -220,9 +294,9 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: <MapPin className="w-5 h-5" />,  label: "Visit Us",  value: "Jaipur, Rajasthan, India" },
-                { icon: <Mail className="w-5 h-5" />,    label: "Email Us",  value: "hello@mallkabaap.com" },
-                { icon: <Phone className="w-5 h-5" />,   label: "Call Us",   value: "+91 98765 43210" },
+                { icon: <MapPin className="w-5 h-5" />,  label: "Visit Us",  value: "EB 20, Shop No 2 & 3, Near Baguiati AC Market, Vip Road, Deshbandhunagar, Kolkata-700059, West Bengal" },
+                { icon: <Mail className="w-5 h-5" />,    label: "Email Us",  value: "agarwal.ankit0193@gmail.com" },
+                { icon: <Phone className="w-5 h-5" />,   label: "Call Us",   value: "07942700870" },
               ].map((c, i) => (
                 <div
                   key={c.label}
