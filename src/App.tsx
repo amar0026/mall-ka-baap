@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+/* ── Scroll ── */
+import ScrollToTop from "./pages/ScrollToTop";
+
 /* ── Auth ── */
 import { AuthProvider } from "./pages/authcontext";
 import ProtectedRoute from "./pages/protectroute";
@@ -26,7 +29,6 @@ import Layout from "./components/common/Layout";
 import { WishlistProvider } from "./components/products/WishlistContext";
 import { CartProvider } from "./components/products/CartContext";
 
-
 function App() {
   return (
     <AuthProvider>
@@ -34,6 +36,9 @@ function App() {
         <WishlistProvider>
 
           <Router>
+
+            {/* Scroll to top on route change */}
+            <ScrollToTop />
 
             <Layout>
 

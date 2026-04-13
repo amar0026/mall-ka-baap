@@ -135,12 +135,16 @@ function DealSlide({ slide, onShopNow }: { slide: Slide; onShopNow: () => void }
 
         {/* Badges */}
         <div className="flex flex-wrap gap-3">
-          <div className="inline-flex items-center gap-2 text-white font-bold rounded-xl"
-            style={{ background: "#ea1e6a", fontSize: 13, padding: "9px 20px" }}>
+          <div
+            className="inline-flex items-center gap-2 text-white font-bold rounded-xl"
+            style={{ background: "#ea1e6a", fontSize: 13, padding: "9px 20px" }}
+          >
             🔥 Flat 50% Off
           </div>
-          <div className="inline-flex items-center gap-2 font-bold rounded-xl border"
-            style={{ background: "#fff3e0", color: "#b85c00", borderColor: "#f59500", fontSize: 12, padding: "9px 16px" }}>
+          <div
+            className="inline-flex items-center gap-2 font-bold rounded-xl border"
+            style={{ background: "#fff3e0", color: "#b85c00", borderColor: "#f59500", fontSize: 12, padding: "9px 16px" }}
+          >
             🚚 Free Delivery
           </div>
         </div>
@@ -154,8 +158,10 @@ function DealSlide({ slide, onShopNow }: { slide: Slide; onShopNow: () => void }
           onMouseLeave={e => (e.currentTarget.style.background = "#111")}
         >
           Shop Now
-          <span className="inline-flex items-center justify-center rounded-full text-white"
-            style={{ background: "#ea1e6a", width: 22, height: 22, fontSize: 12 }}>
+          <span
+            className="inline-flex items-center justify-center rounded-full text-white"
+            style={{ background: "#ea1e6a", width: 22, height: 22, fontSize: 12 }}
+          >
             →
           </span>
         </button>
@@ -215,17 +221,20 @@ export default function HeroSection() {
 
   const slide = slides[current];
 
-  const prev = (): void => setCurrent((current - 1 + slides.length) % slides.length);
-  const next = (): void => setCurrent((current + 1) % slides.length);
+  const prev = (): void => setCurrent(c => (c - 1 + slides.length) % slides.length);
+  const next = (): void => setCurrent(c => (c + 1) % slides.length);
   const goTo = (idx: number): void => setCurrent(idx);
 
-  // Single handler used by all Shop Now buttons and category clicks
-  const handleShopNow = (): void => navigate("/shop");
+  const handleShopNow = (): void => { navigate("/shop"); };
+
+  // Use a ref so the interval never needs to re-register when `current` changes
+  const nextRef = useRef(next);
+  useEffect(() => { nextRef.current = next; });
 
   useEffect(() => {
-    autoRef.current = setInterval(next, 4500);
+    autoRef.current = setInterval(() => nextRef.current(), 4500);
     return () => { if (autoRef.current) clearInterval(autoRef.current); };
-  }, [current]);
+  }, []); // runs once — interval always calls the latest `next` via ref
 
   return (
     <div className="font-['Plus_Jakarta_Sans']">
