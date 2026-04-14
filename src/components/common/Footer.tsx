@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Send, MapPin, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import logo from "../../assets/logo99.png";
 
 const Footer: React.FC = () => {
@@ -10,7 +11,9 @@ const Footer: React.FC = () => {
 
           {/* ── Col 1: Brand + Subscribe ── */}
           <div className="space-y-6">
-            <img src={logo} alt="Mall Ka Baap logo" className="h-12 object-contain" />
+            <Link to="/">
+              <img src={logo} alt="Mall Ka Baap logo" className="h-12 object-contain" />
+            </Link>
 
             <div className="space-y-2">
               <p className="font-semibold text-base">Subscribe</p>
@@ -31,19 +34,11 @@ const Footer: React.FC = () => {
             {/* Social Icons */}
             <div className="flex gap-3">
               {[
-                { icon: <Facebook className="w-4 h-4" />, href: "#" },
-                { icon: <Twitter className="w-4 h-4" />, href: "#" },
-                { icon: <Instagram className="w-4 h-4" />, href: "#" },
-                { icon: <Linkedin className="w-4 h-4" />, href: "#" },
-              ].map((s, i) => (
-                <a
-                  key={i}
-                  href={s.href}
-                  className="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-orange-500 hover:text-orange-500 transition-colors"
-                >
-                  {s.icon}
-                </a>
-              ))}
+                <Facebook className="w-4 h-4" key="facebook" />,
+                <Twitter className="w-4 h-4" key="twitter" />,
+                <Instagram className="w-4 h-4" key="instagram" />,
+                <Linkedin className="w-4 h-4" key="linkedin" />,
+              ]}
             </div>
           </div>
 
@@ -81,11 +76,20 @@ const Footer: React.FC = () => {
               Account
             </h3>
             <ul className="space-y-3 text-sm text-gray-400">
-              {["My Account", "Login / Register", "Cart", "Wishlist", "Shop"].map(link => (
-                <li key={link}>
-                  <a href="#" className="hover:text-orange-400 hover:pl-1 transition-all duration-200">
-                    {link}
-                  </a>
+              {[
+                { label: "My Account", to: "/profile" },
+                { label: "Login / Register", to: "/login" },
+                { label: "Cart", to: "/cart" },
+                { label: "Wishlist", to: "/wishlist" },
+                { label: "Shop", to: "/shop" },
+              ].map(({ label, to }) => (
+                <li key={label}>
+                  <Link
+                    to={to}
+                    className="hover:text-orange-400 hover:pl-1 transition-all duration-200"
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -97,11 +101,20 @@ const Footer: React.FC = () => {
               Quick Link
             </h3>
             <ul className="space-y-3 text-sm text-gray-400">
-              {["Home", "About Us", "Shop", "Categories", "Contact"].map(link => (
-                <li key={link}>
-                  <a href="#" className="hover:text-orange-400 hover:pl-1 transition-all duration-200">
-                    {link}
-                  </a>
+              {[
+                { label: "Home", to: "/" },
+                { label: "About Us", to: "/about" },
+                { label: "Shop", to: "/shop" },
+                { label: "Categories", to: "/categories" },
+                { label: "Contact", to: "/contact" },
+              ].map(({ label, to }) => (
+                <li key={label}>
+                  <Link
+                    to={to}
+                    className="hover:text-orange-400 hover:pl-1 transition-all duration-200"
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>

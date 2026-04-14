@@ -3,8 +3,8 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import tshit     from "../../assets/thsirt.png";
 import watch1    from "../../assets/shopping.webp";
-import mouse     from "../../assets/kids2.png";
-import headPhone from "../../assets/WhatsApp Image 2026-04-13 at 10.24.37 AM.jpeg";
+import mouse     from "../../assets/kids4.png";
+import headPhone from "../../assets/kids5.png";
 import game      from "../../assets/mensuit.png";
 import shoe      from "../../assets/images21.png";
 

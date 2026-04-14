@@ -35,7 +35,7 @@ const SizeGuideModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       style={{ background:'rgba(0,0,0,.5)', backdropFilter:'blur(6px)' }} onClick={onClose}>
-      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden"
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl   overflow-hidden"
         style={{ animation:'sizeGuideIn .4s cubic-bezier(.16,1,.3,1)', maxHeight:'90vh' }}
         onClick={e => e.stopPropagation()}>
         <div className="relative px-6 py-5 border-b border-black/6 bg-gradient-to-r from-orange-50 to-white overflow-hidden">

@@ -47,16 +47,7 @@ const slides: Slide[] = [
     img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775906061/elegant-woman-in-orange-traditional-dress-at-palace-photo_fxvbet.jpg",
     accent: "#ea1e6a",
   },
-  {
-    id: 4,
-    tag: "Sabse Sasta · Sabse Fast",
-    heading: ["Mall Ka", "Baap", "Top Deals", "Are Live!"],
-    accentIdx: 1,
-    body: "Flat 50% off on the latest fashion for men, women & kids — with free delivery on every order.",
-    img: "https://res.cloudinary.com/dquki4xol/image/upload/v1775920937/WhatsApp_Image_2026-04-11_at_8.49.23_PM_tgxanw.jpg",
-    accent: "#ea1e6a",
-    isDealSlide: true,
-  },
+
 ];
 
 const categories: Category[] = [
