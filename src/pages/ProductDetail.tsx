@@ -48,11 +48,8 @@ export const allProducts: Record<string, Product> = {
     description:
       'Comfortable everyday co-ord set crafted from breathable 100% cotton fabric. Perfect for casual outings, brunches, or relaxed days at home.',
     images: [
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1771325461/pngtree-trendy-summer-party-dress-model-girl-in-fashionable-attire-png-image_13211648_ys2ype.png',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773296338/AmericanSilkPinkZariEmbroideredAnarkaliSuitPantWithDupatta_2_fzwckx.webp',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773296149/gulmohar-cotton-hand-block-sharara-set-8853992_atc3e2.webp',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1771325307/images_11_xlytvq.jpg',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773295572/images_22_n6ftjn.jpg',
+      'https://res.cloudinary.com/dquki4xol/image/upload/v1776077841/Square_Neck_Textured_Waist-Cinching_Maroon_Dress_vheg55.webp',
+      
     ],
     colors: [
       { name: 'Brown', hex: '#92400e' },
@@ -79,9 +76,8 @@ export const allProducts: Record<string, Product> = {
     description:
       'Exquisitely embroidered Anarkali kurta crafted in premium Georgette. The intricate zari detailing and flowing silhouette make it perfect for festive occasions and celebrations.',
     images: [
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773296338/AmericanSilkPinkZariEmbroideredAnarkaliSuitPantWithDupatta_2_fzwckx.webp',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1771325461/pngtree-trendy-summer-party-dress-model-girl-in-fashionable-attire-png-image_13211648_ys2ype.png',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773296149/gulmohar-cotton-hand-block-sharara-set-8853992_atc3e2.webp',
+      'https://res.cloudinary.com/dquki4xol/image/upload/v1776078520/images_6_vfn6rc.jpg',
+      
     ],
     colors: [
       { name: 'Pink',  hex: '#ec4899' },
@@ -107,8 +103,7 @@ export const allProducts: Record<string, Product> = {
     description:
       'Modern slim-fit chinos made from a premium cotton-stretch blend. The four-way stretch ensures all-day comfort while maintaining a sharp, tailored look for any occasion.',
     images: [
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773295573/Untitleddesign_98_r0vlhs.webp',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773296337/gemini-generated-image-hisdushisdushisd-1-500x500_z8jlod.webp',
+      'https://res.cloudinary.com/dquki4xol/image/upload/v1776077580/images_4_rs50b4.jpg',
     ],
     colors: [
       { name: 'Khaki', hex: '#a16207' },
@@ -135,8 +130,8 @@ export const allProducts: Record<string, Product> = {
     description:
       'Breezy camp-collar shirt in lightweight rayon with an all-over tropical print. The relaxed fit and breathable fabric make it your go-to for summer parties and weekend outings.',
     images: [
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773296337/gemini-generated-image-hisdushisdushisd-1-500x500_z8jlod.webp',
-      'https://res.cloudinary.com/dquki4xol/image/upload/v1773295573/Untitleddesign_98_r0vlhs.webp',
+      'https://res.cloudinary.com/dquki4xol/image/upload/v1776077580/images_5_f8olir.jpg',
+
     ],
     colors: [
       { name: 'Green', hex: '#15803d' },
